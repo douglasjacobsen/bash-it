@@ -49,13 +49,12 @@ prompt() {
 		clock="${green}$THEME_PROMPT_CLOCK_FORMAT${normal}"
 	fi
 
-    PS1="\[\e]0;\u@\h: \w\a\]${purple}┌─[$my_ps_root${purple}][$my_ps_host${purple}][${my_ps_path}${purple}]$(parse_git_branch)${purple}[$clock${purple}]
+    PS1="\[\e]0;\u@\h: \w\a\]${purple}┌─[$my_ps_root${purple}][$my_ps_host${purple}][${my_ps_path}${purple}]$(__git_ps1 "${purple}[${blue}%s${purple}]")${purple}[$clock${purple}]
 ${purple}└─▪ ${reset_color}"
-}
 
+	PS2="${purple}└─▪ ${reset_color}"
+	PS3=">> "
+}
 
 # Define PS1
 PROMPT_COMMAND=prompt
-
-PS2="${purple}└─▪ ${reset_color}"
-PS3=">> "
