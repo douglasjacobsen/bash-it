@@ -4,6 +4,8 @@ A colorful theme, where shows a lot information about your shell session.
 
 **IMPORTANT:** This theme requires that [a font with the Powerline symbols](https://github.com/powerline/fonts) needs to be used in your terminal emulator, otherwise the prompt won't be displayed correctly, i.e. some of the additional icons and characters will be missing. Please follow your operating system's instructions to install one of the fonts from the above link and select it in your terminal emulator.
 
+**NOTICE:** The default behavior of this theme assumes that you have sudo privileges on your workstation. If that is not the case (e.g. if you are running on a corporate network where `sudo` usage is tracked), you can set the flag 'export THEME_CHECK_SUDO=false' in your `~/.bashrc` or `~/.bash_profile` to disable the Powerline theme's `sudo` check. This will apply to all `powerline*` themes.
+
 ## Provided Information
 
 * Current path
@@ -42,16 +44,21 @@ The time/date is printed by the `date` command, so refer to its man page to chan
 
 The contents of the prompt can be "reordered", all the "segments" (every piece of information) can take any place. The currently available segments are:
 
-* battery
-* clock
-* cwd
-* in_vim
-* python_venv
-* ruby
-* scm
-* user_info
+* `battery` - Battery information (you'll need to enable the `battery` plugin)
+* `clock` - Current time in `HH:MM:SS` format
+* `cwd` - Current working directory including full folder hierarchy (c.f. `wd`)
+* `hostname` - Host name of machine
+* `in_vim` - Show identifier if running in `:terminal` from vim
+* `last_status` - Exit status of last run command
+* `python_venv` - Python virtual environment information (`virtualenv`, `venv`
+  and `conda` supported)
+* `ruby` - Current ruby version if using `rvm`
+* `scm` - Version control information, `git` 
+* `user_info` - Current user
+* `wd` - Working directory, like `cwd` but doesn't show the full folder
+  hierarchy, only the directory you're currently in.
 
-A variables can be defined to set the order of the prompt segments:
+A variable can be defined to set the order of the prompt segments:
 
     POWERLINE_PROMPT="user_info scm python_venv ruby cwd"
 
